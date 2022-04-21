@@ -19,7 +19,6 @@ experiment_id = f"comp{computer_no}_{int(time.time())}"
 # Initialize starting variables
 black = pg.Color(0, 0, 0)
 white = pg.Color(255, 255, 255)
-red  = pg.Color(255, 0, 0)
 green = pg.Color(0, 255, 0)
 
 bgcolor = black
@@ -29,17 +28,9 @@ circle_color = white
 # Start simulation
 pg.init()
 
-pg.display.set_caption('asoidasodisa')
+pg.display.set_caption('Click Test')
 game_window = pg.display.set_mode((window_x, window_y))
 fps = pg.time.Clock()
-
-
-
-fruit_spawn = True
-direction = 'RIGHT'
-change_to = direction
-
-score = 0
 
 def stop_experiment():
     font = pg.font.SysFont('times new roman', 50)
