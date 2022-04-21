@@ -1,0 +1,4 @@
+,circle_x,circle_y,circle_radius,click_x,click_y,time_clicked,click_distance_from_circle_center,click_success,computer_no,dpi_setting,experiment_id
+0,115,196,93,105,187,0.5248458385467529,13.45362404707371,True,1,1,comp1_1650582453
+1,643,123,69,631,118,1.1393234729766846,13.0,True,1,1,comp1_1650582453
+2,381,244,60,385,236,1.8714306354522705,8.94427190999916,True,1,1,comp1_1650582453
