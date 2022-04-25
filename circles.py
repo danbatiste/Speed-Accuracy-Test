@@ -8,7 +8,7 @@ import numpy as np
 window_x = 720
 window_y = 480
 circle_radius_range = [10, 100]
-experiment_allotted_time = 15 # seconds
+experiment_allotted_time = 2 # seconds
 
 computer_no = 1
 dpi_setting = 1 # 0, 1, 2
@@ -33,6 +33,7 @@ game_window = pg.display.set_mode((window_x, window_y))
 fps = pg.time.Clock()
 
 def stop_experiment():
+    game_window.fill(black)
     font = pg.font.SysFont('times new roman', 50)
     stop_experiment_surface = font.render("Time is up!", True, green)
     stop_experiment_rect = stop_experiment_surface.get_rect()
@@ -75,12 +76,18 @@ experiment_results = []
 
 # Start screen loop (runs til user clicks for first time)
 user_clicked = False
+user_released_click = False
 start_screen()
-while not user_clicked:
+while not (user_clicked and user_released_click):
     for event in pg.event.get():
-        if event.type == pg.MOUSEBUTTONDOWN:
+        if event.type == pg.MOUSEBUTTONDOWN and pg.mouse.get_pressed()[0]:
             try:
                 user_clicked = True
+            except:
+                pass
+        if event.type == pg.MOUSEBUTTONUP:
+            try:
+                user_released_click = True
             except:
                 pass
 
@@ -106,10 +113,12 @@ while True:
         pg.draw.circle(game_window, circle_color, circle_position, circle_radius, circle_radius)
         pg.display.update()
         fps.tick(10)
+        user_released_click = False
+        user_clicked = False
 
     # Check if user clicked; if so update dataframe and go to next circle
     for event in pg.event.get():
-        if event.type == pg.MOUSEBUTTONDOWN:
+        if event.type == pg.MOUSEBUTTONDOWN and pg.mouse.get_pressed()[0] and user_released_click:
             try:
                 user_clicked = True
 
@@ -140,6 +149,9 @@ while True:
                 experiment_results.append(experiment_results_entry)
             except:
                 pass
+        elif event.type == pg.MOUSEBUTTONUP:
+            user_released_click = True
+            user_clicked = False
         else:
             user_clicked = False
 

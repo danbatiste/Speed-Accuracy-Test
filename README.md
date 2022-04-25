@@ -1,7 +1,6 @@
 # IME429-Circle-Test
-Human Test for Optimal Mouse DPI
+Human :man_shrugging: Test for Optimal Mouse DPI :mouse2:
 
-## TODO:
+## TODO: :clipboard:
  - 1. Survey
- - 1. Fix bug where holding down the mouse clicks repeatedly
  - 4. Countdown timer from start
