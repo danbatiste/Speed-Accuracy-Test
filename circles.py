@@ -101,7 +101,6 @@ while True:
         experiment_df = pd.DataFrame(experiment_results, columns=experiment_df_columns)
         experiment_df.to_csv(f"experiments/{experiment_id}.csv")
         pg.quit()
-        quit()
         break
 
     # On user click:
@@ -155,4 +154,7 @@ while True:
         else:
             user_clicked = False
 
-
+# Start the survey now
+from survey import *
+start_survey(window_x, window_y, experiment_id)
+quit()
