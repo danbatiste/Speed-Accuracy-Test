@@ -5,15 +5,16 @@ import pandas as pd
 import numpy as np
 
 # Experiment paremeters
-window_x = 960
-window_y = 720
+window_x = 1280
+window_y = 800
 circle_radius_range = [5, 100]
 experiment_allotted_time = 10 # seconds
 
 computer_no = 1
-dpi_setting = 1 # 0, 1, 2
+dpi_setting = 1 # 1, 2, 3 for slow, medium, fast
 experiment_id = f"comp{computer_no}_{int(time.time())}"
 
+fullscreen = True
 
 
 # Initialize starting variables
@@ -29,7 +30,10 @@ circle_color = white
 pg.init()
 
 pg.display.set_caption('Click Test')
-game_window = pg.display.set_mode((window_x, window_y))
+if fullscreen:
+    game_window = pg.display.set_mode((window_x, window_y), pg.FULLSCREEN)
+else:
+    game_window = pg.display.set_mode((window_x, window_y))
 fps = pg.time.Clock()
 
 def stop_experiment():
@@ -91,9 +95,9 @@ while not (user_clicked and user_released_click):
             except:
                 pass
 
-
 # Start experiment
 experiment_start_time = time.time()
+loops = 0
 while True:
     # At end of experiment (after time runs out)
     if time.time() - experiment_start_time >= experiment_allotted_time:
@@ -113,7 +117,6 @@ while True:
         pg.draw.circle(game_window, (255, 0, 0), circle_position, 3, 3)
         pg.display.update()
         fps.tick(10)
-        user_released_click = False
         user_clicked = False
 
     # Check if user clicked; if so update dataframe and go to next circle
@@ -153,7 +156,8 @@ while True:
             user_released_click = True
             user_clicked = False
         else:
-            user_clicked = False
+            if loops != 0: user_clicked = False
+    loops += 1
 
 # Start the survey now
 from survey import *
