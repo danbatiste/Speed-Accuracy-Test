@@ -3,11 +3,11 @@ from tkinter import *
 
 
 questions = {
-    "How fast would you say your mouse/trackpad speed at home is?" : ("radio", ("slow", "medium", "fast")),
-    "At home do you use a mouse or a trackpad?" : ("radio", "mouse trackpad other".split()),
+    "At home, do you use a mouse or a trackpad?" : ("radio", "mouse trackpad other".split()),
+    "How fast would you say your mouse/trackpad speed at home is?" : ("radio", ["below average", "average", "above average"]),
     "How fast do you think you type?" : ("radio", ["below average", "average", "above average"]),
-    "How many hours per week do you play videogames?" : ("text", None),
-    "Sex" : ("radio", ("M", "F")),
+    "How many hours per week do you play videogames?" : ("radio", ("0", "1-5", "6-10", "11+")),
+    "Sex" : ("radio", ("M", "F", "Decline to state")),
 }
 
 
@@ -83,10 +83,10 @@ def start_survey(window_x, window_y, experiment_id, questions=questions):
 
 
     # Set up "opt out" button
-    submit_button = Button(window, text="Opt out and exit survey", width=button_width,
-                           height=button_height, command=(lambda: [submit(survey_response_data, experiment_id), window.destroy()]),
+    opt_out_button = Button(window, text="Opt out and exit survey", width=button_width,
+                           height=button_height, command=(lambda: window.destroy()),
                            bg="#f08888")
-    submit_button.place(x=(window_x/2 - (button_width/2)*window_x/100), y=(window_y*0.75 - (button_height/2)*(window_y/100)))
+    opt_out_button.place(x=(window_x/2 - (button_width/2)*window_x/100), y=(window_y*0.75 - (button_height/2)*(window_y/100)))
 
     # Run the gui
     window.mainloop()

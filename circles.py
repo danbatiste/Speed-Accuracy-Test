@@ -5,10 +5,10 @@ import pandas as pd
 import numpy as np
 
 # Experiment paremeters
-window_x = 720
-window_y = 480
-circle_radius_range = [10, 100]
-experiment_allotted_time = 2 # seconds
+window_x = 960
+window_y = 720
+circle_radius_range = [5, 100]
+experiment_allotted_time = 10 # seconds
 
 computer_no = 1
 dpi_setting = 1 # 0, 1, 2
@@ -110,6 +110,7 @@ while True:
                             rand.randrange(circle_radius, (window_y - circle_radius))//1]
         game_window.fill(bgcolor)
         pg.draw.circle(game_window, circle_color, circle_position, circle_radius, circle_radius)
+        pg.draw.circle(game_window, (255, 0, 0), circle_position, 3, 3)
         pg.display.update()
         fps.tick(10)
         user_released_click = False
