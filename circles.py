@@ -11,7 +11,7 @@ circle_radius_range = [5, 100]
 experiment_allotted_time = 10 # seconds
 
 computer_no = 1
-dpi_setting = 1 # 1, 2, 3 for slow, medium, fast
+dpi_setting = 2 # 1, 2, 3 for slow, medium, fast
 experiment_id = f"comp{computer_no}_{int(time.time())}"
 
 fullscreen = True
