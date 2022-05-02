@@ -1,4 +1,5 @@
 experiments/*
+comp2_experiments/*
 *.zip
 
 # Byte-compiled / optimized / DLL files
